@@ -5,14 +5,26 @@ cercle.addEventListener('click',()=>{
     changeAll()
 
 })
-
+let heureInstant1 = 0
+let randomDelay = 0
 function changeAll(){
 
+    // Clic du joueur
+
+    let heureClicDuJoueur = new Date().getTime()
+    let delayJoueur = heureClicDuJoueur - (heureInstant1 + randomDelay)
+    console.log("delay joueur: "+ delayJoueur)
+    timer.innerHTML = delayJoueur/1000
+    heureInstant1 = heureClicDuJoueur
+    console.log("heure instant 1 : " + heureInstant1)
+    console.log("heure du clic du joueur : " + heureClicDuJoueur)
+
     //Delay avant de changer
-    let randomDelay = Math.random()*5000
+    randomDelay = Math.random()*5000
     console.log("delay: " + randomDelay + "ms")
-    let heureClicDebut = new Date().getTime()
-    console.log("heure du clic : " + heureClicDebut)
+
+    //Cercle transparent au clic
+    cercle.style.backgroundColor = "transparent"
 
     setTimeout(()=>{
         //couleur au hasard
@@ -42,10 +54,9 @@ function changeAll(){
 
     },randomDelay)
 
-    cercle.addEventListener("click",()=>{
-        let heureClicDuJoueur = new Date().getTime()
-        console.log("heure du clic du joueur : " + heureClicDuJoueur)
-    })
+
+
+
 
 
 
